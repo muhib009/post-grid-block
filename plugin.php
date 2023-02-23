@@ -82,8 +82,13 @@ final class PGB_BLOCKS_CLASS {
 	*/
 	public function pgb_blocks_init() {
 		// register single block
-		$this->pgb_register_block( 'pgblock',[
-			'render_callback' => [$this, 'pgblock_render_callback']
+		// $this->pgb_register_block( 'pgblock',[
+		// 	'render_callback' => [$this, 'pgblock_render_callback']
+		// ] );
+
+		// Post Grid Main
+		$this->pgb_register_block( 'post-grid-main',[
+			'render_callback' => [$this, 'post_grid_mainrender_callback']
 		] );
 	}
 
@@ -91,8 +96,15 @@ final class PGB_BLOCKS_CLASS {
 	 * PG Block Render Callback
 	 */
 
-	 public function pgblock_render_callback($attributes, $content){
-		return "Render Callback Hello World";
+	//  public function pgblock_render_callback($attributes, $content){
+	// 	return "Render Callback Hello World";
+	//  }
+
+	 /**
+	 * Post Grid Main Render Callback
+	 */
+	 public function post_grid_mainrender_callback($attributes, $content){
+		return "Post Grid Main";
 	 }
 
 	/**

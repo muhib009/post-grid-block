@@ -1,0 +1,46 @@
+{
+  "apiVersion": 2,
+  "name": "pgb/post-grid-main",
+  "version": "0.1.0",
+  "title": "Post Grid",
+  "category": "pgb",
+  "description": "A simple post grid block for gutenberg editor.",
+  "supports": {
+    "html": false,
+    "anchor": true
+  },
+  "attributes": {
+    "content": {
+      "type": "string",
+      "default": "Hello World!"
+    },
+    "color": {
+      "type": "string",
+      "default": "#00ff00"
+    },
+    "numberOfPosts": {
+      "type": "number",
+      "default": 5
+    },
+    "url": {
+      "type": "string",
+      "default": "www.google.com"
+    },
+    "postFilter": {
+      "type": "string",
+      "default": "latest"
+    },
+    "categories": {
+      "type": "array",
+      "default": []
+    },
+    "posts": {
+      "type": "array",
+      "default": []
+    }
+  },
+  "textdomain": "post-grid-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
