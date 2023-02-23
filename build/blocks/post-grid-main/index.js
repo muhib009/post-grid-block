@@ -2161,6 +2161,7 @@ function Edit(_ref) {
   const selectedPosts = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => {
     return select('core').getEntityRecords('postType', 'post', {
       per_page: numberOfPosts,
+      _embed: true,
       categories: allCats
     });
   });

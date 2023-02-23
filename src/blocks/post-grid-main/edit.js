@@ -43,6 +43,7 @@ export default function Edit({ attributes, setAttributes }) {
 	const selectedPosts = useSelect((select) => {
 		return select('core').getEntityRecords('postType', 'post', {
 			per_page: numberOfPosts,
+			_embed: true,
 			categories: allCats,
 		});
 	});
