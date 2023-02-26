@@ -9,6 +9,10 @@
   display: grid;
   gap: 20px;
 }
+.wp-block-pgb-post-grid-main .post-grid .post-grid-main .post-single-item {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
 .wp-block-pgb-post-grid-main .post-grid .post-grid-main .post-single-item .featured-image {
   position: relative;
 }
@@ -33,12 +37,12 @@
   border-radius: 5px;
   margin-right: 10px;
 }
-.wp-block-pgb-post-grid-main .post-grid .post-grid-main .post-single-item .post-title {
+.wp-block-pgb-post-grid-main .post-grid .post-grid-main .post-single-item .post-title a {
   font-family: "Nunito", sans-serif;
   color: #444;
-  line-height: 1;
+  text-decoration: none;
 }
-.wp-block-pgb-post-grid-main .post-grid .post-grid-main .post-single-item .post-title:hover {
+.wp-block-pgb-post-grid-main .post-grid .post-grid-main .post-single-item .post-title a:hover {
   color: #ff3e61;
 }
 .wp-block-pgb-post-grid-main .post-grid .post-grid-main .post-single-item .post-excerpt p {

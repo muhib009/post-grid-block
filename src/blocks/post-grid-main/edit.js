@@ -22,7 +22,6 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const allPosts = useSelect((select) => {
 		return select('core').getEntityRecords('postType', 'post', {
-			per_page: numberOfPosts,
 			_embed: true,
 		});
 	});
@@ -34,7 +33,7 @@ export default function Edit({ attributes, setAttributes }) {
 	});
 	const allCategories = useSelect((select) => {
 		return select('core').getEntityRecords('taxonomy', 'category', {
-			per_page: numberOfPosts,
+			per_page: -1,
 		});
 	});
 
@@ -48,13 +47,16 @@ export default function Edit({ attributes, setAttributes }) {
 		});
 	});
 
+	const allPostLists = posts && posts.map((post) => post.value);
+
 	const selectIndividualPosts = useSelect((select) => {
 		return select('core').getEntityRecords('postType', 'post', {
-			per_page: numberOfPosts,
-			include: posts && posts.map((post) => post.value),
+			include: allPostLists,
+			_embed: true,
 		});
 	});
 
+	console.log(allPostLists);
 	return (
 		<Fragment>
 			<InspectorControls>
@@ -62,20 +64,24 @@ export default function Edit({ attributes, setAttributes }) {
 					title={__('Settings', 'boilerplate')}
 					initialOpen={true}
 				>
-					<p className="custom__editor__label">
-						{__('Number of Posts', 'boilerplate')}
-					</p>
-					<RangeControl
-						label="Number of Posts"
-						value={numberOfPosts}
-						onChange={(value) =>
-							setAttributes({
-								numberOfPosts: value,
-							})
-						}
-						min={1}
-						max={100}
-					/>
+					{postFilter !== 'individual' && (
+						<>
+							<p className="custom__editor__label">
+								{__('Number of Posts', 'boilerplate')}
+							</p>
+							<RangeControl
+								label="Number of Posts"
+								value={numberOfPosts}
+								onChange={(value) =>
+									setAttributes({
+										numberOfPosts: value,
+									})
+								}
+								min={1}
+								max={100}
+							/>
+						</>
+					)}
 					<SelectControl
 						label="Post Filter"
 						value={postFilter}
@@ -212,7 +218,12 @@ export default function Edit({ attributes, setAttributes }) {
 											<div className="content-section">
 												<div className="post-title">
 													<h4>
-														{post.title.rendered}
+														<a href={post.link}>
+															{
+																post.title
+																	.rendered
+															}
+														</a>
 													</h4>
 												</div>
 												<div className="post-excerpt">
@@ -243,7 +254,80 @@ export default function Edit({ attributes, setAttributes }) {
 											className="post-single-item"
 											key={index}
 										>
-											<div>{post.title.rendered}</div>
+											<div className="header_section">
+												{post &&
+													post._embedded &&
+													post._embedded[
+														'wp:featuredmedia'
+													] && (
+														<>
+															<div className="featured-image">
+																<img
+																	src={
+																		post
+																			._embedded[
+																			'wp:featuredmedia'
+																		][0]
+																			.source_url
+																	}
+																	alt="Hello"
+																/>
+																<div className="categories">
+																	{allCategories &&
+																		allCategories.map(
+																			(
+																				cat,
+																				i
+																			) => {
+																				return (
+																					<div
+																						key={
+																							i
+																						}
+																					>
+																						{post.categories.includes(
+																							cat.id
+																						) && (
+																							<div className="category-item">
+																								{
+																									cat.name
+																								}
+																							</div>
+																						)}
+																					</div>
+																				);
+																			}
+																		)}
+																</div>
+															</div>
+														</>
+													)}
+											</div>
+											<div className="content-section">
+												<div className="post-title">
+													<h4>
+														<a href={post.link}>
+															{
+																post.title
+																	.rendered
+															}
+														</a>
+													</h4>
+												</div>
+												<div className="post-excerpt">
+													<RawHTML>
+														{post.excerpt.rendered}
+													</RawHTML>
+												</div>
+												<div className="content-hyperlink">
+													<a href={post.link}>
+														{__(
+															'Continue Reading >>',
+															'post-grid-block'
+														)}
+													</a>
+												</div>
+											</div>
 										</div>
 									);
 								})
@@ -258,9 +342,79 @@ export default function Edit({ attributes, setAttributes }) {
 											className="post-single-item"
 											key={index}
 										>
-											<div>
-												Latest Posts
-												{post.title.rendered}
+											<div className="header_section">
+												{post &&
+													post._embedded &&
+													post._embedded[
+														'wp:featuredmedia'
+													] && (
+														<>
+															<div className="featured-image">
+																<img
+																	src={
+																		post
+																			._embedded[
+																			'wp:featuredmedia'
+																		][0]
+																			.source_url
+																	}
+																	alt="Hello"
+																/>
+																<div className="categories">
+																	{allCategories &&
+																		allCategories.map(
+																			(
+																				cat,
+																				i
+																			) => {
+																				return (
+																					<div
+																						key={
+																							i
+																						}
+																					>
+																						{post.categories.includes(
+																							cat.id
+																						) && (
+																							<div className="category-item">
+																								{
+																									cat.name
+																								}
+																							</div>
+																						)}
+																					</div>
+																				);
+																			}
+																		)}
+																</div>
+															</div>
+														</>
+													)}
+											</div>
+											<div className="content-section">
+												<div className="post-title">
+													<h4>
+														<a href={post.link}>
+															{
+																post.title
+																	.rendered
+															}
+														</a>
+													</h4>
+												</div>
+												<div className="post-excerpt">
+													<RawHTML>
+														{post.excerpt.rendered}
+													</RawHTML>
+												</div>
+												<div className="content-hyperlink">
+													<a href={post.link}>
+														{__(
+															'Continue Reading >>',
+															'post-grid-block'
+														)}
+													</a>
+												</div>
 											</div>
 										</div>
 									);

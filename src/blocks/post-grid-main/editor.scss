@@ -9,6 +9,10 @@
 			display: grid;
 			gap: 20px;
 			.post-single-item {
+				-webkit-box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+				box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+				border-radius: 10px;
+
 				.featured-image {
 					position: relative;
 					img {
@@ -34,13 +38,13 @@
 					margin-right: 10px;
 				}
 
-				.post-title {
+				.post-title a {
 					font-family: "Nunito", sans-serif;
 					color: #444;
-					line-height: 1;
+					text-decoration: none;
 				}
 
-				.post-title:hover {
+				.post-title a:hover {
 					color: #ff3e61;
 				}
 

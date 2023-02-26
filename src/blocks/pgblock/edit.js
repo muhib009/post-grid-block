@@ -53,7 +53,6 @@ export default function Edit({ attributes, setAttributes }) {
 			include: posts && posts.map((post) => post.value),
 		});
 	});
-	//console.log(posts);
 	return (
 		<Fragment>
 			<InspectorControls>
