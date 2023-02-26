@@ -9,5 +9,51 @@
   display: grid;
   gap: 20px;
 }
+.wp-block-pgb-post-grid-main .post-grid .post-grid-main .post-single-item .featured-image {
+  position: relative;
+}
+.wp-block-pgb-post-grid-main .post-grid .post-grid-main .post-single-item .featured-image img {
+  height: 250px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px 10px 0px 0px;
+}
+.wp-block-pgb-post-grid-main .post-grid .post-grid-main .post-single-item .categories {
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.wp-block-pgb-post-grid-main .post-grid .post-grid-main .post-single-item .category-item {
+  background: #ff3e61;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.wp-block-pgb-post-grid-main .post-grid .post-grid-main .post-single-item .post-title {
+  font-family: "Nunito", sans-serif;
+  color: #444;
+  line-height: 1;
+}
+.wp-block-pgb-post-grid-main .post-grid .post-grid-main .post-single-item .post-title:hover {
+  color: #ff3e61;
+}
+.wp-block-pgb-post-grid-main .post-grid .post-grid-main .post-single-item .post-excerpt p {
+  line-height: 1.7;
+}
+.wp-block-pgb-post-grid-main .post-grid .post-grid-main .post-single-item .content-hyperlink a {
+  text-decoration: none;
+  color: #8c8c8c;
+}
+.wp-block-pgb-post-grid-main .post-grid .post-grid-main .post-single-item .content-hyperlink a:hover {
+  color: #ff3e61;
+}
+.wp-block-pgb-post-grid-main .post-grid .post-grid-main .post-single-item .content-section {
+  margin: 30px;
+  text-align: justify;
+}
 
 /*# sourceMappingURL=index.css.map*/

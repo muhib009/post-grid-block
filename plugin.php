@@ -129,6 +129,7 @@ final class PGB_BLOCKS_CLASS {
 	public function pgb_external_libraries() {
 		// enqueue JS
 		//wp_enqueue_script( 'pgb-lib', PGB_INC_URL . 'js/plugin.js', array(), PGB_VERSION, true );
+		wp_enqueue_script( 'pgb-lib', 'https://fonts.cdnfonts.com/css/nunito', array(), PGB_VERSION, true );
 	}
 
 }

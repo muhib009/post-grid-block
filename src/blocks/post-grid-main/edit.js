@@ -160,57 +160,75 @@ export default function Edit({ attributes, setAttributes }) {
 											className="post-single-item"
 											key={index}
 										>
-											{post &&
-												post._embedded &&
-												post._embedded[
-													'wp:featuredmedia'
-												] && (
-													<div className="fetured-image">
-														<img
-															src={
-																post._embedded[
-																	'wp:featuredmedia'
-																][0].source_url
-															}
-															alt="Hello"
-														/>
-													</div>
-												)}
-											<div className="post-title">
-												<h4>{post.title.rendered}</h4>
-											</div>
-											<div className="post-excerpt">
-												<RawHTML>
-													{post.excerpt.rendered}
-												</RawHTML>
-											</div>
-
-											<div className="categoris">
-												{allCategories &&
-													allCategories.map(
-														(cat, i) => {
-															return (
-																<div
-																	key={i}
-																	style={{
-																		color: 'green',
-																	}}
-																>
-																	{post.categories.includes(
-																		cat.id
-																	) &&
-																		cat.name}
+											<div className="header_section">
+												{post &&
+													post._embedded &&
+													post._embedded[
+														'wp:featuredmedia'
+													] && (
+														<>
+															<div className="featured-image">
+																<img
+																	src={
+																		post
+																			._embedded[
+																			'wp:featuredmedia'
+																		][0]
+																			.source_url
+																	}
+																	alt="Hello"
+																/>
+																<div className="categories">
+																	{allCategories &&
+																		allCategories.map(
+																			(
+																				cat,
+																				i
+																			) => {
+																				return (
+																					<div
+																						key={
+																							i
+																						}
+																					>
+																						{post.categories.includes(
+																							cat.id
+																						) && (
+																							<div className="category-item">
+																								{
+																									cat.name
+																								}
+																							</div>
+																						)}
+																					</div>
+																				);
+																			}
+																		)}
 																</div>
-															);
-														}
+															</div>
+														</>
 													)}
 											</div>
-											<a href={post.link}>
-												{__(
-													'Read More',
-													'post-grid-block'
-												)}
-											</a>
+											<div className="content-section">
+												<div className="post-title">
+													<h4>
+														{post.title.rendered}
+													</h4>
+												</div>
+												<div className="post-excerpt">
+													<RawHTML>
+														{post.excerpt.rendered}
+													</RawHTML>
+												</div>
+												<div className="content-hyperlink">
+													<a href={post.link}>
+														{__(
+															'Continue Reading >>',
+															'post-grid-block'
+														)}
+													</a>
+												</div>
+											</div>
 										</div>
 									);
 								})

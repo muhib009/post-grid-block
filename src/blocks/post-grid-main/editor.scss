@@ -8,6 +8,60 @@
 			grid-template-columns: 1fr 1fr 1fr;
 			display: grid;
 			gap: 20px;
+			.post-single-item {
+				.featured-image {
+					position: relative;
+					img {
+						height: 250px;
+						width: 100%;
+						object-fit: cover;
+						border-radius: 10px 10px 0px 0px;
+					}
+				}
+				.categories {
+					position: absolute;
+					left: 40px;
+					bottom: 40px;
+					display: flex;
+					justify-content: space-between;
+				}
+
+				.category-item {
+					background: #ff3e61;
+					color: white;
+					padding: 3px 10px;
+					border-radius: 5px;
+					margin-right: 10px;
+				}
+
+				.post-title {
+					font-family: "Nunito", sans-serif;
+					color: #444;
+					line-height: 1;
+				}
+
+				.post-title:hover {
+					color: #ff3e61;
+				}
+
+				.post-excerpt p {
+					line-height: 1.7;
+				}
+
+				.content-hyperlink a {
+					text-decoration: none;
+					color: #8c8c8c;
+				}
+
+				.content-hyperlink a:hover {
+					color: #ff3e61;
+				}
+
+				.content-section {
+					margin: 30px;
+					text-align: justify;
+				}
+			}
 		}
 	}
 }
