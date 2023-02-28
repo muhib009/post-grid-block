@@ -2171,70 +2171,91 @@ function Edit(_ref) {
       _embed: true
     });
   });
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Settings', 'boilerplate'),
-    initialOpen: true
-  }, postFilter !== 'individual' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "custom__editor__label"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Number of Posts', 'boilerplate')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-    label: "Number of Posts",
-    value: numberOfPosts,
-    onChange: value => setAttributes({
-      numberOfPosts: value
-    }),
-    min: 1,
-    max: 100
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-    label: "Post Filter",
-    value: postFilter,
-    options: [{
-      label: 'Category',
-      value: 'category'
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TabPanel, {
+    className: "post-grid-panel",
+    activeClass: "active-tab",
+    tabs: [{
+      name: 'pgb_settings',
+      title: 'Settings',
+      className: 'pgb-settings pgb-general'
     }, {
-      label: 'Individual',
-      value: 'individual'
-    }, {
-      label: 'Latest',
-      value: 'latest'
-    }],
-    onChange: value => setAttributes({
-      postFilter: value
-    })
-  }), postFilter === 'category' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_select__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    isMulti: true,
-    value: categories && categories.map(cat => {
-      return {
-        label: cat.label,
-        value: cat.value
-      };
-    }),
-    options: allCategories && allCategories.map(cat => {
-      return {
-        label: cat.name,
-        value: cat.id
-      };
-    }),
-    onChange: value => setAttributes({
-      categories: value
-    })
-  }), postFilter === 'individual' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_select__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    isMulti: true,
-    value: posts && posts.map(post => {
-      return {
-        label: post.label,
-        value: post.value
-      };
-    }),
-    options: allPosts && allPosts.map(post => {
-      return {
-        label: post.title.rendered,
-        value: post.id
-      };
-    }),
-    onChange: value => setAttributes({
-      posts: value
-    })
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      name: 'pgb_advanced',
+      title: 'Advanced',
+      className: 'pgb-advanced pgb-general'
+    }]
+  }, tab => {
+    if (tab.name === 'pgb_settings') {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Container Settings', 'post-grid-block'),
+        initialOpen: true
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Posts Filter', 'post-grid-block'),
+        initialOpen: true
+      }, postFilter !== 'individual' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+        className: "custom__editor__label"
+      }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Number of Posts', 'post-grid-block')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+        label: "Number of Posts",
+        value: numberOfPosts,
+        onChange: value => setAttributes({
+          numberOfPosts: value
+        }),
+        min: 1,
+        max: 100
+      })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+        label: "Select Post Type",
+        value: postFilter,
+        options: [{
+          label: 'Category',
+          value: 'category'
+        }, {
+          label: 'Individual',
+          value: 'individual'
+        }, {
+          label: 'Latest',
+          value: 'latest'
+        }],
+        onChange: value => setAttributes({
+          postFilter: value
+        })
+      }), postFilter === 'category' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_select__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        isMulti: true,
+        value: categories && categories.map(cat => {
+          return {
+            label: cat.label,
+            value: cat.value
+          };
+        }),
+        options: allCategories && allCategories.map(cat => {
+          return {
+            label: cat.name,
+            value: cat.id
+          };
+        }),
+        onChange: value => setAttributes({
+          categories: value
+        })
+      }), postFilter === 'individual' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_select__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        isMulti: true,
+        value: posts && posts.map(post => {
+          return {
+            label: post.label,
+            value: post.value
+          };
+        }),
+        options: allPosts && allPosts.map(post => {
+          return {
+            label: post.title.rendered,
+            value: post.id
+          };
+        }),
+        onChange: value => setAttributes({
+          posts: value
+        })
+      })));
+    } else if (tab.name === 'pgb_advanced') {
+      return 'Hello Advanced';
+    }
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "post-grid-main"
   }, postFilter === 'category' && (selectedPosts ? selectedPosts.map((post, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -10666,7 +10687,7 @@ function combine (array, callback) {
   \**********************************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"apiVersion":2,"name":"pgb/post-grid-main","version":"0.1.0","title":"Post Grid","category":"pgb","description":"A simple post grid block for gutenberg editor.","supports":{"html":false,"anchor":true},"attributes":{"content":{"type":"string","default":"Hello World!"},"color":{"type":"string","default":"#00ff00"},"numberOfPosts":{"type":"number","default":5},"url":{"type":"string","default":"www.google.com"},"postFilter":{"type":"string","default":"latest"},"categories":{"type":"array","default":[]},"posts":{"type":"array","default":[]}},"textdomain":"post-grid-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"apiVersion":2,"name":"pgb/post-grid-main","version":"0.1.0","title":"Post Grid","category":"pgb","description":"A simple post grid block for gutenberg editor.","supports":{"html":false,"anchor":false,"customClassName":false},"attributes":{"content":{"type":"string","default":"Hello World!"},"color":{"type":"string","default":"#00ff00"},"numberOfPosts":{"type":"number","default":5},"url":{"type":"string","default":"www.google.com"},"postFilter":{"type":"string","default":"latest"},"categories":{"type":"array","default":[]},"posts":{"type":"array","default":[]}},"textdomain":"post-grid-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

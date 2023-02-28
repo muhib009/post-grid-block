@@ -60,4 +60,25 @@
   text-align: justify;
 }
 
+.post-grid-panel {
+  border-top: 1px solid #ccc;
+}
+.post-grid-panel .components-tab-panel__tabs-item:focus:not(:disabled) {
+  box-shadow: none;
+}
+.post-grid-panel .components-panel__body-toggle.components-button:focus {
+  box-shadow: none;
+}
+.post-grid-panel .components-button:focus:not(:disabled) {
+  box-shadow: none;
+}
+.post-grid-panel .pgb-general {
+  width: 100%;
+  justify-content: center;
+}
+.post-grid-panel .pgb-general.active-tab {
+  background: skyblue;
+  border-top: 3px solid #015476;
+}
+
 /*# sourceMappingURL=index.css.map*/

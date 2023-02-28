@@ -67,3 +67,29 @@
 		}
 	}
 }
+
+.post-grid-panel {
+	border-top: 1px solid #ccc;
+
+	.components-tab-panel__tabs-item:focus:not(:disabled) {
+		box-shadow: none;
+	}
+
+	.components-panel__body-toggle.components-button:focus {
+		box-shadow: none;
+	}
+
+	.components-button:focus:not(:disabled) {
+		box-shadow: none;
+	}
+
+	.pgb-general {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.pgb-general.active-tab {
+		background: skyblue;
+		border-top: 3px solid #015476;
+	}
+}

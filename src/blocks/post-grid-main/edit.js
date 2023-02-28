@@ -9,6 +9,7 @@ import {
 	RangeControl,
 	TextControl,
 	SelectControl,
+	TabPanel,
 } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import Select from 'react-select';
@@ -59,99 +60,150 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<Fragment>
 			<InspectorControls>
-				<PanelBody
-					title={__('Settings', 'boilerplate')}
-					initialOpen={true}
+				<TabPanel
+					className="post-grid-panel"
+					activeClass="active-tab"
+					tabs={[
+						{
+							name: 'pgb_settings',
+							title: 'Settings',
+							className: 'pgb-settings pgb-general',
+						},
+						{
+							name: 'pgb_advanced',
+							title: 'Advanced',
+							className: 'pgb-advanced pgb-general',
+						},
+					]}
 				>
-					{postFilter !== 'individual' && (
-						<>
-							<p className="custom__editor__label">
-								{__('Number of Posts', 'boilerplate')}
-							</p>
-							<RangeControl
-								label="Number of Posts"
-								value={numberOfPosts}
-								onChange={(value) =>
-									setAttributes({
-										numberOfPosts: value,
-									})
-								}
-								min={1}
-								max={100}
-							/>
-						</>
-					)}
-					<SelectControl
-						label="Post Filter"
-						value={postFilter}
-						options={[
-							{ label: 'Category', value: 'category' },
-							{ label: 'Individual', value: 'individual' },
-							{ label: 'Latest', value: 'latest' },
-						]}
-						onChange={(value) =>
-							setAttributes({
-								postFilter: value,
-							})
+					{(tab) => {
+						if (tab.name === 'pgb_settings') {
+							return (
+								<div>
+									<PanelBody
+										title={__(
+											'Container Settings',
+											'post-grid-block'
+										)}
+										initialOpen={true}
+									></PanelBody>
+									<PanelBody
+										title={__(
+											'Posts Filter',
+											'post-grid-block'
+										)}
+										initialOpen={true}
+									>
+										{postFilter !== 'individual' && (
+											<>
+												<p className="custom__editor__label">
+													{__(
+														'Number of Posts',
+														'post-grid-block'
+													)}
+												</p>
+												<RangeControl
+													label="Number of Posts"
+													value={numberOfPosts}
+													onChange={(value) =>
+														setAttributes({
+															numberOfPosts:
+																value,
+														})
+													}
+													min={1}
+													max={100}
+												/>
+											</>
+										)}
+										<SelectControl
+											label="Select Post Type"
+											value={postFilter}
+											options={[
+												{
+													label: 'Category',
+													value: 'category',
+												},
+												{
+													label: 'Individual',
+													value: 'individual',
+												},
+												{
+													label: 'Latest',
+													value: 'latest',
+												},
+											]}
+											onChange={(value) =>
+												setAttributes({
+													postFilter: value,
+												})
+											}
+										/>
+										{postFilter === 'category' && (
+											<Select
+												isMulti
+												value={
+													categories &&
+													categories.map((cat) => {
+														return {
+															label: cat.label,
+															value: cat.value,
+														};
+													})
+												}
+												options={
+													allCategories &&
+													allCategories.map((cat) => {
+														return {
+															label: cat.name,
+															value: cat.id,
+														};
+													})
+												}
+												onChange={(value) =>
+													setAttributes({
+														categories: value,
+													})
+												}
+											/>
+										)}
+										{postFilter === 'individual' && (
+											<Select
+												isMulti
+												value={
+													posts &&
+													posts.map((post) => {
+														return {
+															label: post.label,
+															value: post.value,
+														};
+													})
+												}
+												options={
+													allPosts &&
+													allPosts.map((post) => {
+														return {
+															label: post.title
+																.rendered,
+															value: post.id,
+														};
+													})
+												}
+												onChange={(value) =>
+													setAttributes({
+														posts: value,
+													})
+												}
+											/>
+										)}
+									</PanelBody>
+								</div>
+							);
+						} else if (tab.name === 'pgb_advanced') {
+							return 'Hello Advanced';
 						}
-					/>
-					{postFilter === 'category' && (
-						<Select
-							isMulti
-							value={
-								categories &&
-								categories.map((cat) => {
-									return {
-										label: cat.label,
-										value: cat.value,
-									};
-								})
-							}
-							options={
-								allCategories &&
-								allCategories.map((cat) => {
-									return {
-										label: cat.name,
-										value: cat.id,
-									};
-								})
-							}
-							onChange={(value) =>
-								setAttributes({
-									categories: value,
-								})
-							}
-						/>
-					)}
-					{postFilter === 'individual' && (
-						<Select
-							isMulti
-							value={
-								posts &&
-								posts.map((post) => {
-									return {
-										label: post.label,
-										value: post.value,
-									};
-								})
-							}
-							options={
-								allPosts &&
-								allPosts.map((post) => {
-									return {
-										label: post.title.rendered,
-										value: post.id,
-									};
-								})
-							}
-							onChange={(value) =>
-								setAttributes({
-									posts: value,
-								})
-							}
-						/>
-					)}
-				</PanelBody>
+					}}
+				</TabPanel>
 			</InspectorControls>
 
 			<div {...useBlockProps()}>
