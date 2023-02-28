@@ -25,24 +25,25 @@
 			position: absolute;
 			left: 40px;
 			bottom: 40px;
-			display: flex;
-			justify-content: space-between;
 		}
 
 		.category-item {
-			background: #ff3e61;
-			color: white;
-			padding: 15px 10px;
-			border-radius: 5px;
-			margin-right: 10px;
 			ul.post-categories {
+				display: flex;
 				list-style: none;
 				margin: 0;
 			}
 
+			ul.post-categories li {
+				margin-right: 10px;
+			}
+
 			ul.post-categories li a {
 				text-decoration: none;
+				background-color: #ff3e61;
 				color: white;
+				border-radius: 5px;
+				padding: 5px 5px;
 			}
 		}
 

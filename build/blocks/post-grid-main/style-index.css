@@ -28,23 +28,21 @@
   position: absolute;
   left: 40px;
   bottom: 40px;
-  display: flex;
-  justify-content: space-between;
-}
-.post-grid-main .post-single-item .category-item {
-  background: #ff3e61;
-  color: white;
-  padding: 15px 10px;
-  border-radius: 5px;
-  margin-right: 10px;
 }
 .post-grid-main .post-single-item .category-item ul.post-categories {
+  display: flex;
   list-style: none;
   margin: 0;
 }
+.post-grid-main .post-single-item .category-item ul.post-categories li {
+  margin-right: 10px;
+}
 .post-grid-main .post-single-item .category-item ul.post-categories li a {
   text-decoration: none;
+  background-color: #ff3e61;
   color: white;
+  border-radius: 5px;
+  padding: 5px 5px;
 }
 .post-grid-main .post-single-item .post-title h4 {
   line-height: 1.2;

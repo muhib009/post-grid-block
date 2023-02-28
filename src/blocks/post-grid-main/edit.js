@@ -15,11 +15,23 @@ import { useSelect } from '@wordpress/data';
 import Select from 'react-select';
 const { Fragment, RawHTML } = wp.element;
 
+import ColorControl from '../../utilities/components/colorcontrol/colorcontrol';
+import PgbStyle from './pgb-style';
+
 // editor style
 import './editor.scss';
 
 export default function Edit({ attributes, setAttributes }) {
-	const { postFilter, numberOfPosts, url, categories, posts } = attributes;
+	const {
+		postFilter,
+		numberOfPosts,
+		url,
+		categories,
+		posts,
+		containerBg,
+		conatainerPadding,
+		numberofRows,
+	} = attributes;
 
 	const allPosts = useSelect((select) => {
 		return select('core').getEntityRecords('postType', 'post', {
@@ -86,7 +98,38 @@ export default function Edit({ attributes, setAttributes }) {
 											'post-grid-block'
 										)}
 										initialOpen={true}
-									></PanelBody>
+									>
+										<ColorControl
+											label="Background Color"
+											colorValue={containerBg}
+											colorName="containerBg"
+											setAttributes={setAttributes}
+										/>
+
+										<RangeControl
+											label="Number of Rows"
+											value={numberofRows}
+											onChange={(value) =>
+												setAttributes({
+													numberofRows: value,
+												})
+											}
+											min={0}
+											max={10}
+										/>
+
+										<RangeControl
+											label="Padding"
+											value={conatainerPadding}
+											onChange={(value) =>
+												setAttributes({
+													conatainerPadding: value,
+												})
+											}
+											min={0}
+											max={100}
+										/>
+									</PanelBody>
 									<PanelBody
 										title={__(
 											'Posts Filter',
@@ -206,7 +249,12 @@ export default function Edit({ attributes, setAttributes }) {
 				</TabPanel>
 			</InspectorControls>
 
-			<div {...useBlockProps()}>
+			<PgbStyle
+				containerBg={containerBg}
+				conatainerPadding={conatainerPadding}
+				numberofRows={numberofRows}
+				{...useBlockProps()}
+			>
 				<div className="post-grid-main">
 					{postFilter === 'category' &&
 						(selectedPosts ? (
@@ -464,7 +512,7 @@ export default function Edit({ attributes, setAttributes }) {
 							<p>Loading Latest Posts . . .</p>
 						))}
 				</div>
-			</div>
+			</PgbStyle>
 		</Fragment>
 	);
 }

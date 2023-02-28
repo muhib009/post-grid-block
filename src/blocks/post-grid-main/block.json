@@ -19,13 +19,20 @@
 			"type": "string",
 			"default": "#00ff00"
 		},
+		"containerBg": {
+			"type": "string"
+		},
 		"numberOfPosts": {
 			"type": "number",
 			"default": 5
 		},
-		"url": {
-			"type": "string",
-			"default": "www.google.com"
+		"conatainerPadding": {
+			"type": "number",
+			"default": 0
+		},
+		"numberofRows": {
+			"type": "number",
+			"default": 3
 		},
 		"postFilter": {
 			"type": "string",

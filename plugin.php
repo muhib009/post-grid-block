@@ -131,7 +131,7 @@ final class PGB_BLOCKS_CLASS {
 			$args['post__in'] = $post_ids;
 		}
 
-
+		
 	
 		$post_query = new WP_Query($args);
 
