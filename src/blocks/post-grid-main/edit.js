@@ -21,11 +21,10 @@ import PgbStyle from './pgb-style';
 // editor style
 import './editor.scss';
 
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit({ attributes, setAttributes, clientId }) {
 	const {
 		postFilter,
 		numberOfPosts,
-		url,
 		categories,
 		posts,
 		containerBg,
@@ -67,6 +66,11 @@ export default function Edit({ attributes, setAttributes }) {
 			include: allPostLists,
 			_embed: true,
 		});
+	});
+
+	// set unique id
+	setAttributes({
+		id: 'etb-grid-' + clientId.slice(0, 8),
 	});
 
 	return (

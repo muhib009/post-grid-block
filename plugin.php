@@ -89,10 +89,25 @@ final class PGB_BLOCKS_CLASS {
 		] );
 	}	
 
+	public function pgb_register_inline_style( $id, $css ){
+		wp_register_style( $id, false );
+		wp_enqueue_style( $id );
+		wp_add_inline_style( $id, $css );
+	 } 
+
 	 /**
 	 * Post Grid Main Render Callback
 	 */
 	 public function post_grid_mainrender_callback($attributes, $content){
+
+		require_once __DIR__ . '/templates/post-grid/post-grid.php';
+		$id = $attributes['id']; 
+		
+		$this->pgb_register_inline_style(
+			$id,
+			post_grid( $attributes )
+		);
+
 
 		$number_of_posts = isset($attributes['numberOfPosts']) ? $attributes['numberOfPosts'] : -1;
 		$categories = isset($attributes['categories']) ? $attributes['categories'] : [];

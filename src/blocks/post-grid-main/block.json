@@ -11,6 +11,9 @@
 		"customClassName": false
 	},
 	"attributes": {
+		"id": {
+			"type": "string"
+		},
 		"content": {
 			"type": "string",
 			"default": "Hello World!"
@@ -21,6 +24,14 @@
 		},
 		"containerBg": {
 			"type": "string"
+		},
+		"gridCols": {
+			"type": "number",
+			"default": 5
+		},
+		"gridGap": {
+			"type": "number",
+			"default": 5
 		},
 		"numberOfPosts": {
 			"type": "number",
