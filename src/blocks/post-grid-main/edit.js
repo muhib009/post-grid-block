@@ -56,7 +56,6 @@ export default function Edit({ attributes, setAttributes }) {
 		});
 	});
 
-	console.log(allPostLists);
 	return (
 		<Fragment>
 			<InspectorControls>
@@ -156,273 +155,262 @@ export default function Edit({ attributes, setAttributes }) {
 			</InspectorControls>
 
 			<div {...useBlockProps()}>
-				<div className="post-grid">
-					<div className="post-grid-main">
-						{postFilter === 'category' &&
-							(selectedPosts ? (
-								selectedPosts.map((post, index) => {
-									return (
-										<div
-											className="post-single-item"
-											key={index}
-										>
-											<div className="header_section">
-												{post &&
-													post._embedded &&
-													post._embedded[
-														'wp:featuredmedia'
-													] && (
-														<>
-															<div className="featured-image">
-																<img
-																	src={
-																		post
-																			._embedded[
-																			'wp:featuredmedia'
-																		][0]
-																			.source_url
-																	}
-																	alt="Hello"
-																/>
-																<div className="categories">
-																	{allCategories &&
-																		allCategories.map(
-																			(
-																				cat,
-																				i
-																			) => {
-																				return (
-																					<div
-																						key={
-																							i
-																						}
-																					>
-																						{post.categories.includes(
-																							cat.id
-																						) && (
-																							<div className="category-item">
-																								{
-																									cat.name
-																								}
-																							</div>
-																						)}
-																					</div>
-																				);
-																			}
-																		)}
-																</div>
+				<div className="post-grid-main">
+					{postFilter === 'category' &&
+						(selectedPosts ? (
+							selectedPosts.map((post, index) => {
+								return (
+									<div
+										className="post-single-item"
+										key={index}
+									>
+										<div className="header_section">
+											{post &&
+												post._embedded &&
+												post._embedded[
+													'wp:featuredmedia'
+												] && (
+													<>
+														<div className="featured-image">
+															<img
+																src={
+																	post
+																		._embedded[
+																		'wp:featuredmedia'
+																	][0]
+																		.source_url
+																}
+																alt="Hello"
+															/>
+															<div className="categories">
+																{allCategories &&
+																	allCategories.map(
+																		(
+																			cat,
+																			i
+																		) => {
+																			return (
+																				<div
+																					key={
+																						i
+																					}
+																				>
+																					{post.categories.includes(
+																						cat.id
+																					) && (
+																						<div className="category-item">
+																							{
+																								cat.name
+																							}
+																						</div>
+																					)}
+																				</div>
+																			);
+																		}
+																	)}
 															</div>
-														</>
-													)}
-											</div>
-											<div className="content-section">
-												<div className="post-title">
-													<h4>
-														<a href={post.link}>
-															{
-																post.title
-																	.rendered
-															}
-														</a>
-													</h4>
-												</div>
-												<div className="post-excerpt">
-													<RawHTML>
-														{post.excerpt.rendered}
-													</RawHTML>
-												</div>
-												<div className="content-hyperlink">
+														</div>
+													</>
+												)}
+										</div>
+										<div className="content-section">
+											<div className="post-title">
+												<h4>
 													<a href={post.link}>
-														{__(
-															'Continue Reading >>',
-															'post-grid-block'
-														)}
+														{post.title.rendered}
 													</a>
-												</div>
+												</h4>
+											</div>
+											<div className="post-excerpt">
+												<RawHTML>
+													{post.excerpt.rendered}
+												</RawHTML>
+											</div>
+											<div className="content-hyperlink">
+												<a href={post.link}>
+													{__(
+														'Continue Reading >>',
+														'post-grid-block'
+													)}
+												</a>
 											</div>
 										</div>
-									);
-								})
-							) : (
-								<p>Loading Category Posts . . .</p>
-							))}
-						{postFilter === 'individual' &&
-							(selectIndividualPosts ? (
-								selectIndividualPosts.map((post, index) => {
-									return (
-										<div
-											className="post-single-item"
-											key={index}
-										>
-											<div className="header_section">
-												{post &&
-													post._embedded &&
-													post._embedded[
-														'wp:featuredmedia'
-													] && (
-														<>
-															<div className="featured-image">
-																<img
-																	src={
-																		post
-																			._embedded[
-																			'wp:featuredmedia'
-																		][0]
-																			.source_url
-																	}
-																	alt="Hello"
-																/>
-																<div className="categories">
-																	{allCategories &&
-																		allCategories.map(
-																			(
-																				cat,
-																				i
-																			) => {
-																				return (
-																					<div
-																						key={
-																							i
-																						}
-																					>
-																						{post.categories.includes(
-																							cat.id
-																						) && (
-																							<div className="category-item">
-																								{
-																									cat.name
-																								}
-																							</div>
-																						)}
-																					</div>
-																				);
-																			}
-																		)}
-																</div>
+									</div>
+								);
+							})
+						) : (
+							<p>Loading Category Posts . . .</p>
+						))}
+					{postFilter === 'individual' &&
+						(selectIndividualPosts ? (
+							selectIndividualPosts.map((post, index) => {
+								return (
+									<div
+										className="post-single-item"
+										key={index}
+									>
+										<div className="header_section">
+											{post &&
+												post._embedded &&
+												post._embedded[
+													'wp:featuredmedia'
+												] && (
+													<>
+														<div className="featured-image">
+															<img
+																src={
+																	post
+																		._embedded[
+																		'wp:featuredmedia'
+																	][0]
+																		.source_url
+																}
+																alt="Hello"
+															/>
+															<div className="categories">
+																{allCategories &&
+																	allCategories.map(
+																		(
+																			cat,
+																			i
+																		) => {
+																			return (
+																				<div
+																					key={
+																						i
+																					}
+																				>
+																					{post.categories.includes(
+																						cat.id
+																					) && (
+																						<div className="category-item">
+																							{
+																								cat.name
+																							}
+																						</div>
+																					)}
+																				</div>
+																			);
+																		}
+																	)}
 															</div>
-														</>
-													)}
-											</div>
-											<div className="content-section">
-												<div className="post-title">
-													<h4>
-														<a href={post.link}>
-															{
-																post.title
-																	.rendered
-															}
-														</a>
-													</h4>
-												</div>
-												<div className="post-excerpt">
-													<RawHTML>
-														{post.excerpt.rendered}
-													</RawHTML>
-												</div>
-												<div className="content-hyperlink">
+														</div>
+													</>
+												)}
+										</div>
+										<div className="content-section">
+											<div className="post-title">
+												<h4>
 													<a href={post.link}>
-														{__(
-															'Continue Reading >>',
-															'post-grid-block'
-														)}
+														{post.title.rendered}
 													</a>
-												</div>
+												</h4>
+											</div>
+											<div className="post-excerpt">
+												<RawHTML>
+													{post.excerpt.rendered}
+												</RawHTML>
+											</div>
+											<div className="content-hyperlink">
+												<a href={post.link}>
+													{__(
+														'Continue Reading >>',
+														'post-grid-block'
+													)}
+												</a>
 											</div>
 										</div>
-									);
-								})
-							) : (
-								<p>Loading Individual Posts . . .</p>
-							))}
-						{postFilter === 'latest' &&
-							(latestPosts ? (
-								latestPosts.map((post, index) => {
-									return (
-										<div
-											className="post-single-item"
-											key={index}
-										>
-											<div className="header_section">
-												{post &&
-													post._embedded &&
-													post._embedded[
-														'wp:featuredmedia'
-													] && (
-														<>
-															<div className="featured-image">
-																<img
-																	src={
-																		post
-																			._embedded[
-																			'wp:featuredmedia'
-																		][0]
-																			.source_url
-																	}
-																	alt="Hello"
-																/>
-																<div className="categories">
-																	{allCategories &&
-																		allCategories.map(
-																			(
-																				cat,
-																				i
-																			) => {
-																				return (
-																					<div
-																						key={
-																							i
-																						}
-																					>
-																						{post.categories.includes(
-																							cat.id
-																						) && (
-																							<div className="category-item">
-																								{
-																									cat.name
-																								}
-																							</div>
-																						)}
-																					</div>
-																				);
-																			}
-																		)}
-																</div>
+									</div>
+								);
+							})
+						) : (
+							<p>Loading Individual Posts . . .</p>
+						))}
+					{postFilter === 'latest' &&
+						(latestPosts ? (
+							latestPosts.map((post, index) => {
+								return (
+									<div
+										className="post-single-item"
+										key={index}
+									>
+										<div className="header_section">
+											{post &&
+												post._embedded &&
+												post._embedded[
+													'wp:featuredmedia'
+												] && (
+													<>
+														<div className="featured-image">
+															<img
+																src={
+																	post
+																		._embedded[
+																		'wp:featuredmedia'
+																	][0]
+																		.source_url
+																}
+																alt="Hello"
+															/>
+															<div className="categories">
+																{allCategories &&
+																	allCategories.map(
+																		(
+																			cat,
+																			i
+																		) => {
+																			return (
+																				<div
+																					key={
+																						i
+																					}
+																				>
+																					{post.categories.includes(
+																						cat.id
+																					) && (
+																						<div className="category-item">
+																							{
+																								cat.name
+																							}
+																						</div>
+																					)}
+																				</div>
+																			);
+																		}
+																	)}
 															</div>
-														</>
-													)}
-											</div>
-											<div className="content-section">
-												<div className="post-title">
-													<h4>
-														<a href={post.link}>
-															{
-																post.title
-																	.rendered
-															}
-														</a>
-													</h4>
-												</div>
-												<div className="post-excerpt">
-													<RawHTML>
-														{post.excerpt.rendered}
-													</RawHTML>
-												</div>
-												<div className="content-hyperlink">
+														</div>
+													</>
+												)}
+										</div>
+										<div className="content-section">
+											<div className="post-title">
+												<h4>
 													<a href={post.link}>
-														{__(
-															'Continue Reading >>',
-															'post-grid-block'
-														)}
+														{post.title.rendered}
 													</a>
-												</div>
+												</h4>
+											</div>
+											<div className="post-excerpt">
+												<RawHTML>
+													{post.excerpt.rendered}
+												</RawHTML>
+											</div>
+											<div className="content-hyperlink">
+												<a href={post.link}>
+													{__(
+														'Continue Reading >>',
+														'post-grid-block'
+													)}
+												</a>
 											</div>
 										</div>
-									);
-								})
-							) : (
-								<p>Loading Latest Posts . . .</p>
-							))}
-					</div>
+									</div>
+								);
+							})
+						) : (
+							<p>Loading Latest Posts . . .</p>
+						))}
 				</div>
 			</div>
 		</Fragment>

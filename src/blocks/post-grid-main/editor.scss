@@ -3,68 +3,66 @@
 */
 
 .wp-block-pgb-post-grid-main {
-	.post-grid {
-		& .post-grid-main {
-			grid-template-columns: 1fr 1fr 1fr;
-			display: grid;
-			gap: 20px;
-			.post-single-item {
-				-webkit-box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
-				box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
-				border-radius: 10px;
+	& .post-grid-main {
+		grid-template-columns: 1fr 1fr 1fr;
+		display: grid;
+		gap: 20px;
+		.post-single-item {
+			-webkit-box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+			box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+			border-radius: 10px;
 
-				.featured-image {
-					position: relative;
-					img {
-						height: 250px;
-						width: 100%;
-						object-fit: cover;
-						border-radius: 10px 10px 0px 0px;
-					}
+			.featured-image {
+				position: relative;
+				img {
+					height: 250px;
+					width: 100%;
+					object-fit: cover;
+					border-radius: 10px 10px 0px 0px;
 				}
-				.categories {
-					position: absolute;
-					left: 40px;
-					bottom: 40px;
-					display: flex;
-					justify-content: space-between;
-				}
+			}
+			.categories {
+				position: absolute;
+				left: 40px;
+				bottom: 40px;
+				display: flex;
+				justify-content: space-between;
+			}
 
-				.category-item {
-					background: #ff3e61;
-					color: white;
-					padding: 3px 10px;
-					border-radius: 5px;
-					margin-right: 10px;
-				}
+			.category-item {
+				background: #ff3e61;
+				color: white;
+				padding: 3px 10px;
+				border-radius: 5px;
+				margin-right: 10px;
+			}
 
-				.post-title a {
-					font-family: "Nunito", sans-serif;
-					color: #444;
-					text-decoration: none;
-				}
+			.post-title a {
+				font-family: "Nunito", sans-serif;
+				color: #444;
+				text-decoration: none;
+			}
 
-				.post-title a:hover {
-					color: #ff3e61;
-				}
+			.post-title a:hover {
+				color: #ff3e61;
+			}
 
-				.post-excerpt p {
-					line-height: 1.7;
-				}
+			.post-excerpt p {
+				line-height: 1.7;
+			}
 
-				.content-hyperlink a {
-					text-decoration: none;
-					color: #8c8c8c;
-				}
+			.content-hyperlink a {
+				text-decoration: none;
+				color: #8c8c8c;
+			}
 
-				.content-hyperlink a:hover {
-					color: #ff3e61;
-				}
+			.content-hyperlink a:hover {
+				color: #ff3e61;
+			}
 
-				.content-section {
-					margin: 30px;
-					text-align: justify;
-				}
+			.content-section {
+				margin: 30px;
+				text-align: justify;
 			}
 		}
 	}

@@ -4,10 +4,72 @@
 /*
 * Style Works for both Editor and Frontend
 */
-.wp-block-create-block-boilerplate {
-  background-color: #21759b;
-  color: #fff;
-  padding: 2px;
+.post-grid-main {
+  grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+  gap: 20px;
+}
+.post-grid-main .post-single-item {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+.post-grid-main .post-single-item .featured-image {
+  position: relative;
+  margin-top: 0px;
+}
+.post-grid-main .post-single-item .featured-image img {
+  height: 250px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px 10px 0px 0px;
+}
+.post-grid-main .post-single-item .categories {
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.post-grid-main .post-single-item .category-item {
+  background: #ff3e61;
+  color: white;
+  padding: 15px 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.post-grid-main .post-single-item .category-item ul.post-categories {
+  list-style: none;
+  margin: 0;
+}
+.post-grid-main .post-single-item .category-item ul.post-categories li a {
+  text-decoration: none;
+  color: white;
+}
+.post-grid-main .post-single-item .post-title h4 {
+  line-height: 1.2;
+}
+.post-grid-main .post-single-item .post-title a {
+  font-family: "Nunito", sans-serif;
+  color: #444;
+  text-decoration: none;
+}
+.post-grid-main .post-single-item .post-title a:hover {
+  color: #ff3e61;
+}
+.post-grid-main .post-single-item .post-excerpt p {
+  line-height: 1.7;
+}
+.post-grid-main .post-single-item .content-hyperlink a {
+  text-decoration: none;
+  color: #8c8c8c;
+}
+.post-grid-main .post-single-item .content-hyperlink a:hover {
+  color: #ff3e61;
+}
+.post-grid-main .post-single-item .content-section {
+  margin: 30px;
+  text-align: justify;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

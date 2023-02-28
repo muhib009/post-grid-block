@@ -81,30 +81,87 @@ final class PGB_BLOCKS_CLASS {
 	 * Blocks Initialization
 	*/
 	public function pgb_blocks_init() {
-		// register single block
-		// $this->pgb_register_block( 'pgblock',[
-		// 	'render_callback' => [$this, 'pgblock_render_callback']
-		// ] );
+		// register single block	
 
 		// Post Grid Main
 		$this->pgb_register_block( 'post-grid-main',[
 			'render_callback' => [$this, 'post_grid_mainrender_callback']
 		] );
-	}
-
-	/**
-	 * PG Block Render Callback
-	 */
-
-	//  public function pgblock_render_callback($attributes, $content){
-	// 	return "Render Callback Hello World";
-	//  }
+	}	
 
 	 /**
 	 * Post Grid Main Render Callback
 	 */
 	 public function post_grid_mainrender_callback($attributes, $content){
-		return "Post Grid Main";
+
+		$number_of_posts = isset($attributes['numberOfPosts']) ? $attributes['numberOfPosts'] : -1;
+		$categories = isset($attributes['categories']) ? $attributes['categories'] : [];
+		$post_filter_type = isset($attributes['postFilter']) ? $attributes['postFilter'] : 'latest';
+		$posts = isset($attributes['posts']) ? $attributes['posts'] : [];
+
+		$category_ids = [];
+
+		foreach ($categories as $category) {
+			$category_ids[] = $category['value'];
+		}
+
+		$post_ids = [];
+
+		foreach ($posts as $post) {
+			$post_ids[] = $post['value'];
+		}
+
+		// echo "<pre>";
+		// print_r($post_filter_type);
+		// echo "</pre>";
+
+		$args = [
+			'post_type' => 'post',
+		];
+
+		if( $post_filter_type !== 'individual'){
+			$args['posts_per_page'] = $number_of_posts;
+		}
+
+		if( $post_filter_type == 'category'){
+			$args['category__in'] = $category_ids;
+		}
+
+		if( $post_filter_type == 'individual'){
+			$args['post__in'] = $post_ids;
+		}
+
+
+	
+		$post_query = new WP_Query($args);
+
+		$content = '';
+		$content .= '<div class="post-grid-main">';
+		
+		if($post_query->have_posts() ) {
+			while($post_query->have_posts() ) {
+				$post_query->the_post();
+				
+
+				$image = get_the_post_thumbnail();
+				
+				$content .= '<div class="post-single-item">';
+				$content .= '<div class="header_section">';
+				$content .= '<div class="featured-image">';
+				$content .= $image;
+				$content .= '<div class="categories"><div class="category-item">'.get_the_category_list().'</div></div>';
+				$content .= '</div></div>';
+				$content .= '<div class="content-section">';
+				$content .= '<div class="post-title"><h4><a href="'. get_the_permalink().'">'. get_the_title().'</a></h4></div>';
+				$content .= '<div class="post-excerpt">'.get_the_excerpt().'</div>';
+				$content .= '<div class="content-hyperlink"><a href="'.get_the_permalink().'">Continue Reading &gt;&gt;</a></div>';
+				$content .= '</div></div>';			
+					
+				}
+			}
+
+			$content .= '</div>';
+		return $content;		
 	 }
 
 	/**
