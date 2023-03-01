@@ -17,6 +17,7 @@ const { Fragment, RawHTML } = wp.element;
 
 import ColorControl from '../../utilities/components/colorcontrol/colorcontrol';
 import PgbStyle from './pgb-style';
+import SingleInput from '../../utilities/components/singleinput/singleinput';
 
 // editor style
 import './editor.scss';
@@ -36,6 +37,9 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		headingColor,
 		excerptColor,
 		readMoreColor,
+		headingFontSizes,
+		excerptFontSizes,
+		readMoreFontSizes,
 	} = attributes;
 
 	const allPosts = useSelect((select) => {
@@ -331,6 +335,54 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 												})
 											}
 										/>
+
+										<SingleInput
+											label={__(
+												'Heading Font Size',
+												'post-grid-block'
+											)}
+											attribute={headingFontSizes}
+											attributeName="headingFontSizes"
+											setAttributes={setAttributes}
+											min={1}
+											max={100}
+											deskResetValue={18}
+											tabResetValue={16}
+											mobResetValue={14}
+											unit="px"
+										/>
+
+										<SingleInput
+											label={__(
+												'Excerpt Font Size',
+												'post-grid-block'
+											)}
+											attribute={excerptFontSizes}
+											attributeName="excerptFontSizes"
+											setAttributes={setAttributes}
+											min={1}
+											max={100}
+											deskResetValue={18}
+											tabResetValue={16}
+											mobResetValue={14}
+											unit="px"
+										/>
+
+										<SingleInput
+											label={__(
+												'Read More Font Size',
+												'post-grid-block'
+											)}
+											attribute={readMoreFontSizes}
+											attributeName="readMoreFontSizes"
+											setAttributes={setAttributes}
+											min={1}
+											max={100}
+											deskResetValue={18}
+											tabResetValue={16}
+											mobResetValue={14}
+											unit="px"
+										/>
 									</PanelBody>
 								</div>
 							);
@@ -341,7 +393,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 										<TextControl
 											label={__(
 												'Custom CSS Class(es)',
-												'easy-testimonial-blocks'
+												'post-grid-block'
 											)}
 											value={customClases}
 											onChange={(value) =>
@@ -351,7 +403,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 											}
 											help={__(
 												'Separate multiple classes with a space.',
-												'easy-testimonial-blocks'
+												'post-grid-block'
 											)}
 										/>
 									</PanelBody>
@@ -370,6 +422,9 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 				readMoreColor={readMoreColor}
 				conatainerPadding={conatainerPadding}
 				numberofRows={numberofRows}
+				headingFontSizes={headingFontSizes}
+				excerptFontSizes={excerptFontSizes}
+				readMoreFontSizes={readMoreFontSizes}
 				{...useBlockProps({
 					className: `${customClases || ''}`,
 				})}

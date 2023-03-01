@@ -21,6 +21,40 @@ const PgbStyle = styled.div`
 			}
 		}
 	}
+
+	@media (min-width: 1025px) {
+		.post-title h4 a {
+			font-size: ${(props) => props.headingFontSizes.desktop}px;
+		}
+		.post-excerpt {
+			font-size: ${(props) => props.excerptFontSizes.desktop}px;
+		}
+		.content-hyperlink a {
+			font-size: ${(props) => props.readMoreFontSizes.desktop}px;
+		}
+	}
+	@media (min-width: 768px) and (max-width: 1024px) {
+		.post-title h4 a {
+			font-size: ${(props) => props.headingFontSizes.tablet}px;
+		}
+		.post-excerpt {
+			font-size: ${(props) => props.excerptFontSizes.tablet}px;
+		}
+		.content-hyperlink a {
+			font-size: ${(props) => props.readMoreFontSizes.tablet}px;
+		}
+	}
+	@media (max-width: 767px) {
+		.post-title h4 a {
+			font-size: ${(props) => props.headingFontSizes.mobile}px;
+		}
+		.post-excerpt {
+			font-size: ${(props) => props.excerptFontSizes.mobile}px;
+		}
+		.content-hyperlink a {
+			font-size: ${(props) => props.readMoreFontSizes.mobile}px;
+		}
+	}
 `;
 
 export default PgbStyle;

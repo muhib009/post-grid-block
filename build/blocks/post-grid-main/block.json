@@ -25,8 +25,7 @@
       "default": "Hello World!"
     },
     "contentBg": {
-      "type": "string",
-      "default": "#00ff00"
+      "type": "string"
     },
     "containerBg": {
       "type": "string"
@@ -71,6 +70,30 @@
     "posts": {
       "type": "array",
       "default": []
+    },
+    "headingFontSizes": {
+      "type": "object",
+      "default": {
+        "desktop": 24,
+        "tablet": 20,
+        "mobile": 16
+      }
+    },
+    "excerptFontSizes": {
+      "type": "object",
+      "default": {
+        "desktop": 18,
+        "tablet": 16,
+        "mobile": 14
+      }
+    },
+    "readMoreFontSizes": {
+      "type": "object",
+      "default": {
+        "desktop": 16,
+        "tablet": 14,
+        "mobile": 12
+      }
     }
   },
   "textdomain": "post-grid-block",

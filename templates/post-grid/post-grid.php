@@ -46,30 +46,50 @@
 
   // Desktop
   $css .= "@media (min-width: 1025px) {";
-    // grid 
-    // $css .= ".$handle.wp-block-etb-grid{";
-    //   $css .= "grid-template-columns: repeat({$attributes['gridCols']['desktop']}, 1fr);";
-    //   $css .= "grid-gap: {$attributes['gridGap']['desktop']}px;";
-    // $css .= "}";
+
+    $css .= ".$handle .post-title h4 a{";
+      $css .= "font-size: {$attributes['headingFontSizes']['desktop']}px;";
+    $css .= "}";
+    
+    $css .= ".$handle .post-excerpt{";
+      $css .= "font-size: {$attributes['excerptFontSizes']['desktop']}px;";
+    $css .= "}";
+    
+    $css .= ".$handle .content-hyperlink a{";
+      $css .= "font-size: {$attributes['readMoreFontSizes']['desktop']}px;";
+    $css .= "}";
 
   $css .= "}";
 
   // Tablet
   $css .= "@media (min-width: 768px) and (max-width: 1024px) {";
-    // grid 
-//     $css .= ".$handle.wp-block-etb-grid{";
-//       $css .= "grid-template-columns: repeat({$attributes['gridCols']['tablet']}, 1fr);";
-//       $css .= "grid-gap: {$attributes['gridGap']['tablet']}px;";
-//     $css .= "}";
-//   $css .= "}";
+
+      $css .= ".$handle .post-title h4 a{";
+        $css .= "font-size: {$attributes['headingFontSizes']['tablet']}px;";
+      $css .= "}";
+      
+      $css .= ".$handle .post-excerpt{";
+        $css .= "font-size: {$attributes['excerptFontSizes']['tablet']}px;";
+      $css .= "}";
+      
+      $css .= ".$handle .content-hyperlink a{";
+        $css .= "font-size: {$attributes['readMoreFontSizes']['tablet']}px;";
+      $css .= "}";
 
   // Mobile
   $css .= "@media (max-width: 767px) {";
-    // grid 
-    // $css .= ".$handle.wp-block-etb-grid{";
-    //   $css .= "grid-template-columns: repeat({$attributes['gridCols']['mobile']}, 1fr);";
-    //   $css .= "grid-gap: {$attributes['gridGap']['mobile']}px;";
-    // $css .= "}";
+    
+    $css .= ".$handle .post-title h4 a{";
+        $css .= "font-size: {$attributes['headingFontSizes']['mobile']}px;";
+      $css .= "}";
+      
+      $css .= ".$handle .post-excerpt{";
+        $css .= "font-size: {$attributes['excerptFontSizes']['mobile']}px;";
+      $css .= "}";
+      
+      $css .= ".$handle .content-hyperlink a{";
+        $css .= "font-size: {$attributes['readMoreFontSizes']['mobile']}px;";
+      $css .= "}";
 
   $css .= "}";
 
