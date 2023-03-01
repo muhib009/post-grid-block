@@ -53,12 +53,15 @@
 .wp-block-pgb-post-grid-main .post-grid-main .post-single-item {
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  display: block;
+  overflow: hidden;
 }
 .wp-block-pgb-post-grid-main .post-grid-main .post-single-item .featured-image {
   position: relative;
+  height: 250px;
 }
 .wp-block-pgb-post-grid-main .post-grid-main .post-single-item .featured-image img {
-  height: 250px;
+  height: 100%;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -97,8 +100,9 @@
   color: #ff3e61;
 }
 .wp-block-pgb-post-grid-main .post-grid-main .post-single-item .content-section {
-  margin: 30px;
+  padding: 30px;
   text-align: justify;
+  height: 100%;
 }
 
 .post-grid-panel {

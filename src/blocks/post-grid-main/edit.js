@@ -32,6 +32,10 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		numberofRows,
 		customClases,
 		headingTag,
+		contentBg,
+		headingColor,
+		excerptColor,
+		readMoreColor,
 	} = attributes;
 
 	const allPosts = useSelect((select) => {
@@ -253,7 +257,40 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 										)}
 										initialOpen={false}
 									>
-										<p>Heading Settings</p>
+										<p className="pgb-label">
+											{__(
+												'Color Settings',
+												'post-grid-block'
+											)}
+										</p>
+
+										<ColorControl
+											label="Content Background"
+											colorValue={contentBg}
+											colorName="contentBg"
+											setAttributes={setAttributes}
+										/>
+
+										<ColorControl
+											label="Heading Color"
+											colorValue={headingColor}
+											colorName="headingColor"
+											setAttributes={setAttributes}
+										/>
+
+										<ColorControl
+											label="Excerpt Color"
+											colorValue={excerptColor}
+											colorName="excerptColor"
+											setAttributes={setAttributes}
+										/>
+
+										<ColorControl
+											label="Read More Link Color"
+											colorValue={readMoreColor}
+											colorName="readMoreColor"
+											setAttributes={setAttributes}
+										/>
 
 										<SelectControl
 											label="Select Heading Tag"
@@ -327,6 +364,10 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 
 			<PgbStyle
 				containerBg={containerBg}
+				contentBg={contentBg}
+				headingColor={headingColor}
+				excerptColor={excerptColor}
+				readMoreColor={readMoreColor}
 				conatainerPadding={conatainerPadding}
 				numberofRows={numberofRows}
 				{...useBlockProps({

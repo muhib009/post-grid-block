@@ -16,6 +16,33 @@
     }    
   $css .= "}";
 
+  
+  $css .= ".$handle .post-single-item .content-section{";
+        if(!empty($attributes['contentBg'])) {
+        $css .= "background-color: {$attributes['contentBg']};";
+        }
+    $css .= "}";
+    
+    $css .= ".$handle .post-title h4 a{";
+        if(!empty($attributes['headingColor'])) {
+            $css .= "color: {$attributes['headingColor']}!important;";
+        }    
+    $css .= "}";
+    
+    $css .= ".$handle .post-excerpt{";
+        if(!empty($attributes['excerptColor'])) {
+            $css .= "color: {$attributes['excerptColor']};";
+        }    
+    $css .= "}";
+    
+    $css .= ".$handle .content-hyperlink a{";
+        if(!empty($attributes['readMoreColor'])) {
+            $css .= "color: {$attributes['readMoreColor']}!important;";
+        }    
+    $css .= "}";
+    
+ 
+
 
   // Desktop
   $css .= "@media (min-width: 1025px) {";

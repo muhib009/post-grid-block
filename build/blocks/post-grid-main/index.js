@@ -2816,7 +2816,11 @@ function Edit(_ref) {
     conatainerPadding,
     numberofRows,
     customClases,
-    headingTag
+    headingTag,
+    contentBg,
+    headingColor,
+    excerptColor,
+    readMoreColor
   } = attributes;
   const allPosts = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.useSelect)(select => {
     return select('core').getEntityRecords('postType', 'post', {
@@ -2957,7 +2961,29 @@ function Edit(_ref) {
       })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content Style Settings', 'post-grid-block'),
         initialOpen: false
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Heading Settings"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
+        className: "pgb-label"
+      }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Color Settings', 'post-grid-block')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_utilities_components_colorcontrol_colorcontrol__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        label: "Content Background",
+        colorValue: contentBg,
+        colorName: "contentBg",
+        setAttributes: setAttributes
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_utilities_components_colorcontrol_colorcontrol__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        label: "Heading Color",
+        colorValue: headingColor,
+        colorName: "headingColor",
+        setAttributes: setAttributes
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_utilities_components_colorcontrol_colorcontrol__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        label: "Excerpt Color",
+        colorValue: excerptColor,
+        colorName: "excerptColor",
+        setAttributes: setAttributes
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_utilities_components_colorcontrol_colorcontrol__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        label: "Read More Link Color",
+        colorValue: readMoreColor,
+        colorName: "readMoreColor",
+        setAttributes: setAttributes
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
         label: "Select Heading Tag",
         value: headingTag,
         options: [{
@@ -3000,6 +3026,10 @@ function Edit(_ref) {
     }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pgb_style__WEBPACK_IMPORTED_MODULE_7__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     containerBg: containerBg,
+    contentBg: contentBg,
+    headingColor: headingColor,
+    excerptColor: excerptColor,
+    readMoreColor: readMoreColor,
     conatainerPadding: conatainerPadding,
     numberofRows: numberofRows
   }, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
@@ -3170,6 +3200,19 @@ const PgbStyle = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div`
 		background-color: ${props => props.containerBg};
 		padding: ${props => props.conatainerPadding}px;
 		grid-template-columns: ${props => `repeat(${props.numberofRows}, 1fr)`};
+
+		& .content-section {
+			background-color: ${props => props.contentBg};
+			.post-title h4 a {
+				color: ${props => props.headingColor};
+			}
+			.post-excerpt {
+				color: ${props => props.excerptColor};
+			}
+			.content-hyperlink a {
+				color: ${props => props.readMoreColor};
+			}
+		}
 	}
 `;
 /* harmony default export */ __webpack_exports__["default"] = (PgbStyle);
@@ -12008,7 +12051,7 @@ function combine (array, callback) {
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"name":"pgb/post-grid-main","version":"0.1.0","title":"Post Grid","category":"pgb","description":"A simple post grid block for gutenberg editor.","supports":{"html":false,"anchor":false,"customClassName":false},"attributes":{"id":{"type":"string"},"customClases":{"type":"string"},"headingTag":{"type":"string"},"content":{"type":"string","default":"Hello World!"},"color":{"type":"string","default":"#00ff00"},"containerBg":{"type":"string"},"gridCols":{"type":"number","default":5},"gridGap":{"type":"number","default":5},"numberOfPosts":{"type":"number","default":5},"conatainerPadding":{"type":"number","default":0},"numberofRows":{"type":"number","default":3},"postFilter":{"type":"string","default":"latest"},"categories":{"type":"array","default":[]},"posts":{"type":"array","default":[]}},"textdomain":"post-grid-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"apiVersion":2,"name":"pgb/post-grid-main","version":"0.1.0","title":"Post Grid","category":"pgb","description":"A simple post grid block for gutenberg editor.","supports":{"html":false,"anchor":false,"customClassName":false},"attributes":{"id":{"type":"string"},"customClases":{"type":"string"},"headingTag":{"type":"string"},"content":{"type":"string","default":"Hello World!"},"contentBg":{"type":"string","default":"#00ff00"},"containerBg":{"type":"string"},"headingColor":{"type":"string"},"excerptColor":{"type":"string"},"readMoreColor":{"type":"string"},"gridCols":{"type":"number","default":5},"gridGap":{"type":"number","default":5},"numberOfPosts":{"type":"number","default":5},"conatainerPadding":{"type":"number","default":0},"numberofRows":{"type":"number","default":3},"postFilter":{"type":"string","default":"latest"},"categories":{"type":"array","default":[]},"posts":{"type":"array","default":[]}},"textdomain":"post-grid-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

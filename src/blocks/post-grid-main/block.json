@@ -24,11 +24,20 @@
 			"type": "string",
 			"default": "Hello World!"
 		},
-		"color": {
+		"contentBg": {
 			"type": "string",
 			"default": "#00ff00"
 		},
 		"containerBg": {
+			"type": "string"
+		},
+		"headingColor": {
+			"type": "string"
+		},
+		"excerptColor": {
+			"type": "string"
+		},
+		"readMoreColor": {
 			"type": "string"
 		},
 		"gridCols": {
