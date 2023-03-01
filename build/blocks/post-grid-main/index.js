@@ -2814,7 +2814,9 @@ function Edit(_ref) {
     posts,
     containerBg,
     conatainerPadding,
-    numberofRows
+    numberofRows,
+    customClases,
+    headingTag
   } = attributes;
   const allPosts = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.useSelect)(select => {
     return select('core').getEntityRecords('postType', 'post', {
@@ -2849,7 +2851,7 @@ function Edit(_ref) {
   }); // set unique id
 
   setAttributes({
-    id: 'etb-grid-' + clientId.slice(0, 8)
+    id: 'pgb-grid-' + clientId.slice(0, 8)
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TabPanel, {
     className: "post-grid-panel",
@@ -2890,8 +2892,8 @@ function Edit(_ref) {
         min: 0,
         max: 100
       })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Posts Filter', 'post-grid-block'),
-        initialOpen: true
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Post Filter Settings', 'post-grid-block'),
+        initialOpen: false
       }, postFilter !== 'individual' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
         className: "custom__editor__label"
       }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Number of Posts', 'post-grid-block')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
@@ -2952,15 +2954,57 @@ function Edit(_ref) {
         onChange: value => setAttributes({
           posts: value
         })
+      })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Content Style Settings', 'post-grid-block'),
+        initialOpen: false
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Heading Settings"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.SelectControl, {
+        label: "Select Heading Tag",
+        value: headingTag,
+        options: [{
+          label: 'H1',
+          value: 'h1'
+        }, {
+          label: 'H2',
+          value: 'h2'
+        }, {
+          label: 'H3',
+          value: 'h3'
+        }, {
+          label: 'H4',
+          value: 'h4'
+        }, {
+          label: 'H5',
+          value: 'h5'
+        }, {
+          label: 'H6',
+          value: 'h6'
+        }, {
+          label: 'p',
+          value: 'p'
+        }],
+        onChange: value => setAttributes({
+          headingTag: value
+        })
       })));
     } else if (tab.name === 'pgb_advanced') {
-      return 'Hello Advanced';
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+        initialOpen: true
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TextControl, {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Custom CSS Class(es)', 'easy-testimonial-blocks'),
+        value: customClases,
+        onChange: value => setAttributes({
+          customClases: value
+        }),
+        help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Separate multiple classes with a space.', 'easy-testimonial-blocks')
+      })));
     }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pgb_style__WEBPACK_IMPORTED_MODULE_7__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     containerBg: containerBg,
     conatainerPadding: conatainerPadding,
     numberofRows: numberofRows
-  }, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
+    className: `${customClases || ''}`
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "post-grid-main"
   }, postFilter === 'category' && (selectedPosts ? selectedPosts.map((post, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
@@ -11964,7 +12008,7 @@ function combine (array, callback) {
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"name":"pgb/post-grid-main","version":"0.1.0","title":"Post Grid","category":"pgb","description":"A simple post grid block for gutenberg editor.","supports":{"html":false,"anchor":false,"customClassName":false},"attributes":{"id":{"type":"string"},"content":{"type":"string","default":"Hello World!"},"color":{"type":"string","default":"#00ff00"},"containerBg":{"type":"string"},"gridCols":{"type":"number","default":5},"gridGap":{"type":"number","default":5},"numberOfPosts":{"type":"number","default":5},"conatainerPadding":{"type":"number","default":0},"numberofRows":{"type":"number","default":3},"postFilter":{"type":"string","default":"latest"},"categories":{"type":"array","default":[]},"posts":{"type":"array","default":[]}},"textdomain":"post-grid-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"apiVersion":2,"name":"pgb/post-grid-main","version":"0.1.0","title":"Post Grid","category":"pgb","description":"A simple post grid block for gutenberg editor.","supports":{"html":false,"anchor":false,"customClassName":false},"attributes":{"id":{"type":"string"},"customClases":{"type":"string"},"headingTag":{"type":"string"},"content":{"type":"string","default":"Hello World!"},"color":{"type":"string","default":"#00ff00"},"containerBg":{"type":"string"},"gridCols":{"type":"number","default":5},"gridGap":{"type":"number","default":5},"numberOfPosts":{"type":"number","default":5},"conatainerPadding":{"type":"number","default":0},"numberofRows":{"type":"number","default":3},"postFilter":{"type":"string","default":"latest"},"categories":{"type":"array","default":[]},"posts":{"type":"array","default":[]}},"textdomain":"post-grid-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

@@ -30,6 +30,8 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		containerBg,
 		conatainerPadding,
 		numberofRows,
+		customClases,
+		headingTag,
 	} = attributes;
 
 	const allPosts = useSelect((select) => {
@@ -70,7 +72,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 
 	// set unique id
 	setAttributes({
-		id: 'etb-grid-' + clientId.slice(0, 8),
+		id: 'pgb-grid-' + clientId.slice(0, 8),
 	});
 
 	return (
@@ -136,10 +138,10 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 									</PanelBody>
 									<PanelBody
 										title={__(
-											'Posts Filter',
+											'Post Filter Settings',
 											'post-grid-block'
 										)}
-										initialOpen={true}
+										initialOpen={false}
 									>
 										{postFilter !== 'individual' && (
 											<>
@@ -244,10 +246,80 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 											/>
 										)}
 									</PanelBody>
+									<PanelBody
+										title={__(
+											'Content Style Settings',
+											'post-grid-block'
+										)}
+										initialOpen={false}
+									>
+										<p>Heading Settings</p>
+
+										<SelectControl
+											label="Select Heading Tag"
+											value={headingTag}
+											options={[
+												{
+													label: 'H1',
+													value: 'h1',
+												},
+												{
+													label: 'H2',
+													value: 'h2',
+												},
+												{
+													label: 'H3',
+													value: 'h3',
+												},
+												{
+													label: 'H4',
+													value: 'h4',
+												},
+												{
+													label: 'H5',
+													value: 'h5',
+												},
+												{
+													label: 'H6',
+													value: 'h6',
+												},
+												{
+													label: 'p',
+													value: 'p',
+												},
+											]}
+											onChange={(value) =>
+												setAttributes({
+													headingTag: value,
+												})
+											}
+										/>
+									</PanelBody>
 								</div>
 							);
 						} else if (tab.name === 'pgb_advanced') {
-							return 'Hello Advanced';
+							return (
+								<Fragment>
+									<PanelBody initialOpen={true}>
+										<TextControl
+											label={__(
+												'Custom CSS Class(es)',
+												'easy-testimonial-blocks'
+											)}
+											value={customClases}
+											onChange={(value) =>
+												setAttributes({
+													customClases: value,
+												})
+											}
+											help={__(
+												'Separate multiple classes with a space.',
+												'easy-testimonial-blocks'
+											)}
+										/>
+									</PanelBody>
+								</Fragment>
+							);
 						}
 					}}
 				</TabPanel>
@@ -257,7 +329,9 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 				containerBg={containerBg}
 				conatainerPadding={conatainerPadding}
 				numberofRows={numberofRows}
-				{...useBlockProps()}
+				{...useBlockProps({
+					className: `${customClases || ''}`,
+				})}
 			>
 				<div className="post-grid-main">
 					{postFilter === 'category' &&
@@ -320,9 +394,11 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 										<div className="content-section">
 											<div className="post-title">
 												<h4>
+													{/* {`<${headingTag}>`} */}
 													<a href={post.link}>
 														{post.title.rendered}
 													</a>
+													{/* {`</${headingTag}>`} */}
 												</h4>
 											</div>
 											<div className="post-excerpt">

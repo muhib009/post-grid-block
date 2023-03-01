@@ -102,7 +102,6 @@ final class PGB_BLOCKS_CLASS {
 
 		require_once __DIR__ . '/templates/post-grid/post-grid.php';
 		$id = $attributes['id']; 
-		
 		$this->pgb_register_inline_style(
 			$id,
 			post_grid( $attributes )
@@ -151,7 +150,7 @@ final class PGB_BLOCKS_CLASS {
 		$post_query = new WP_Query($args);
 
 		$content = '';
-		$content .= '<div class="post-grid-main">';
+		$content .= '<div class=" '.$id.' post-grid-main">';
 		
 		if($post_query->have_posts() ) {
 			while($post_query->have_posts() ) {

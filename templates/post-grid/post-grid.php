@@ -8,9 +8,11 @@
 
   $css ='';
 
-  $css .= ".post-grid-main{";
+  $css .= ".$handle.post-grid-main{";
     if(!empty($attributes['containerBg'])) {
       $css .= "background-color: {$attributes['containerBg']};";
+      $css .= "grid-template-columns: repeat({$attributes['numberofRows']}, 1fr);";
+      $css .= "padding: {$attributes['conatainerPadding']}px";
     }    
   $css .= "}";
 
